@@ -1,0 +1,177 @@
+﻿@model StudentViewTemplatesDemo.Models.Student
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+    <style>
+        body {
+            font-family: 'Indie Flower', cursive;
+            background-color: #F0ECE5;
+            color: #31304D;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            box-sizing: border-box;
+            margin: 40px auto;
+        }
+
+        h4 {
+            text-align: center;
+            color: #161A30;
+            margin-top: 0;
+            font-size: 24px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #161A30;
+        }
+
+        .form-horizontal {
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group label {
+                color: #31304D;
+                font-weight: bold;
+                display: block;
+                margin-bottom: 5px;
+            }
+
+        .form-control {
+            border: 1px solid #B6BBC4;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #161A30;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+            .btn:hover {
+                background-color: #31304D;
+            }
+
+        .text-danger {
+            color: #d9534f;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #B6BBC4;
+            margin: 20px 0;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            .back-link a {
+                text-decoration: none;
+                color: #161A30; 
+                padding: 0; 
+            }
+
+                .back-link a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+<body>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <div class="container">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Create New Student</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name)
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Age)
+                    @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+                </div>
+
+                <h4>Address</h4>
+                <hr />
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Address.Country)
+                    @Html.EditorFor(model => model.Address.Country, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Address.Country, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Address.State)
+                    @Html.EditorFor(model => model.Address.State, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Address.State, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Address.City)
+                    @Html.EditorFor(model => model.Address.City, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Address.City, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group btn-container">
+                    <input type="submit" value="Create" class="btn" />
+                </div>
+            </div>
+        }
+
+        <div class="back-link">
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn-link" })
+        </div>
+    </div>
+</body>
+</html>

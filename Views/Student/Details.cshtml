@@ -1,0 +1,90 @@
+﻿@model StudentViewTemplatesDemo.Models.Student
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Details</title>
+    <style>
+        body {
+            font-family: 'Indie Flower', cursive;
+            background-color: #F0ECE5;
+            color: #31304D;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-sizing: border-box;
+            margin: 20px auto;
+        }
+
+        h4 {
+            color: #161A30;
+            font-size: 24px;
+            margin: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #161A30;
+            text-align: center;
+        }
+
+        dl {
+            margin: 20px 0;
+        }
+
+        dt {
+            font-weight: bold;
+            color: #161A30;
+            margin-bottom: 5px;
+        }
+
+        dd {
+            margin: 0 0 10px;
+            color: #31304D;
+        }
+
+        .back-link, .edit-link {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+            .back-link a, .edit-link a {
+                text-decoration: none;
+                color: #161A30; /* Link color */
+            }
+
+                .back-link a:hover, .edit-link a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h4>Student Details</h4>
+        <dl>
+            <dt>@Html.DisplayNameFor(model => model.Name)</dt>
+            <dd>@Html.DisplayFor(model => model.Name)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Age)</dt>
+            <dd>@Html.DisplayFor(model => model.Age)</dd>
+        </dl>
+        <div class="edit-link">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "edit-link" })
+        </div>
+        <div class="back-link">
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "back-link" })
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,133 @@
+﻿@model IEnumerable<StudentViewTemplatesDemo.Models.Student>
+
+@{
+    ViewBag.Title = "Student List";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Student List</title>
+
+    <style>
+        body {
+            font-family: 'Indie Flower', cursive;
+            background-color: #F0ECE5;
+            color: #31304D;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            color: #161A30;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #161A30;
+            color: white;
+        }
+
+        td {
+            color: #31304D;
+        }
+
+        .action-links a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #161A30;
+        }
+
+            .action-links a:hover {
+                color: #31304D;
+            }
+
+        .create-button-container {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+            .create-button-container a {
+                padding: 10px 20px;
+                background-color: #161A30;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+            }
+
+                .create-button-container a:hover {
+                    background-color: #31304D;
+                }
+
+        .back-to-list {
+            text-align: right;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Student List</h2>
+
+        <div class="create-button-container">
+            @Html.ActionLink("Create New", "Create", new { @class = "btn" })
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Age)</td>
+                        <td class="action-links">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+                            @Html.ActionLink("Address", "GetAddress", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</body>
+</html>
